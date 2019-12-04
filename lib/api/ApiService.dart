@@ -4,7 +4,7 @@ import 'package:http/http.dart' show Client;
 class ApiService {
   final String baseUrl = "http://api.themoviedb.org";
   static const String API_PARAM = "api_key";
-  static const String API_KEY = "9c11e1693a8fbaa62bb4172d6f2132c8";
+  static const String API_KEY = "";
   Client client = Client();
 
   Future<List<Result>> getProfiles(String sort) async {
