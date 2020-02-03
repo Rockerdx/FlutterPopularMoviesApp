@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_movies_app/model/data.dart';
+import 'package:flutter_movies_app/models/data.dart';
 import 'package:flutter_movies_app/ui/detail.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'movies.dart';
 
 class MovieRow extends StatefulWidget {
-  final List<Result> profiles;
+  final List<Result> movies;
 
   final Function onFav;
 
-  const MovieRow({Key key, this.profiles, this.onFav}) : super(key: key);
+  const MovieRow({Key key, this.movies, this.onFav}) : super(key: key);
   @override
   _MovieRowState createState() => _MovieRowState();
 }
@@ -30,7 +30,7 @@ class _MovieRowState extends State<MovieRow> {
       child: GridView.builder(
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          Result result = widget.profiles[index];
+          Result result = widget.movies[index];
           return AnimationConfiguration.staggeredList(
             position: index,
             duration: const Duration(milliseconds: 400),
@@ -51,7 +51,7 @@ class _MovieRowState extends State<MovieRow> {
             ),
           );
         },
-        itemCount: widget.profiles.length,
+        itemCount: widget.movies.length,
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 185 / 278,

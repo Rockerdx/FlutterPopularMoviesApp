@@ -29,6 +29,7 @@ dependencies:
   flutter_staggered_animations: ^0.1.2
   url_launcher: ^5.2.7
   flutter_spinkit: ^4.1.0
+  rxdart: ^0.18.0
 
 dev_dependencies:
   flutter_test:
