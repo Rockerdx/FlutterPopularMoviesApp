@@ -14,7 +14,6 @@ class _MainAppState extends State<MainApp> {
   int selectedCategory = 0;
   String sort = 'now_playing';
 
-
   @override
   Widget build(BuildContext context) {
     bloc.fetchAllMovies(sort);
@@ -106,8 +105,8 @@ class _MainAppState extends State<MainApp> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
-                child: StreamBuilder(
-                  stream: bloc.allMovies,
+                child: StreamBuilder<List<Result>>(
+                  stream: bloc.subject.stream,
                   builder: (context, AsyncSnapshot<List<Result>> snapshot) {
                     if (snapshot.hasData) {
                       return MovieRow(

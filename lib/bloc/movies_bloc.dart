@@ -3,19 +3,20 @@ import 'package:rxdart/rxdart.dart';
 import '../models/data.dart';
 
 class MoviesBloc {
-  final _repository = Repository();
-  final _moviesFetcher = PublishSubject<List<Result>>();
-
-  Observable<List<Result>> get allMovies => _moviesFetcher.stream;
+  final Repository _repository = Repository();
+  final BehaviorSubject<List<Result>> _subject =
+      BehaviorSubject<List<Result>>();
 
   fetchAllMovies(String sort) async {
     List<Result> itemModel = await _repository.fetchAllMovies(sort);
-    _moviesFetcher.sink.add(itemModel);
+    _subject.sink.add(itemModel);
   }
 
   dispose() {
-    _moviesFetcher.close();
+    _subject.close();
   }
+
+  BehaviorSubject<List<Result>> get subject => _subject;
 }
 
 final bloc = MoviesBloc();
